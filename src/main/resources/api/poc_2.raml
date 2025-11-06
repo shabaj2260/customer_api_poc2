@@ -1,0 +1,51 @@
+#%RAML 1.0
+title: Customer API
+version: v1
+baseUri: http://localhost:8081/api/v1
+mediaType:
+  - application/json
+
+types:
+  customer:
+    type: object
+    properties:
+      ID: integer
+      Name: string
+      email: string
+    example:
+      ID: 1
+      Name: shabaj
+      email: shabushabaj@gmail.com
+
+/customers:
+  get:
+    description: Retrieve list of customers
+    responses:
+      200:
+        body:
+          application/json:
+            type: customer[]
+      500:
+              description: server error
+  post:
+    description: Create a new customer
+    body:
+      application/json:
+        example:
+          name: shaik
+          email: ahamed@gmail.com
+    responses:
+            201:
+              body:
+                application/json:
+                  type: customer
+            400:
+              description: Invalid input
+            500:
+              description: Server error
+
+                      
+
+
+                    
+                                          
